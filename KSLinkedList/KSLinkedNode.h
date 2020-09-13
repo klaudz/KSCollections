@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) KSLinkedNode *prevNode;
 @property (nonatomic, strong, nullable) KSLinkedNode *nextNode;
 
+- (instancetype)initWithObject:(nullable id)object;
++ (instancetype)nodeWithObject:(nullable id)object;
+
 @end
 
 NS_ASSUME_NONNULL_END

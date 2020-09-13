@@ -11,6 +11,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation KSLinkedNode
 
+- (instancetype)initWithObject:(nullable id)object
+{
+    self = [self init];
+    if (self) {
+        _object = [object retain];
+    }
+    return self;
+}
+
++ (instancetype)nodeWithObject:(nullable id)object
+{
+    return [[[self alloc] initWithObject:object] autorelease];
+}
+
 - (void)dealloc
 {
     [_object release];
