@@ -7,7 +7,7 @@ target 'KSLinkedListDemo' do
   platform :ios, '8.0'
   
   # Pods for KSLinkedListDemo
-  # pod 'KSLinkedList',     :path => '.'
+  pod 'KSLinkedList',     :path => '.'
   
 end
 
@@ -18,6 +18,6 @@ target 'KSLinkedListTests' do
   platform :ios, '8.0'
   
   # Pods for KSLinkedListTests
-  # pod 'KSLinkedList',     :path => '.'
+  pod 'KSLinkedList',     :path => '.'
   
 end
