@@ -14,9 +14,12 @@
 		63C29FA9250E664C00B28E5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C29FA8250E664C00B28E5C /* Assets.xcassets */; };
 		63C29FAC250E664C00B28E5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C29FAA250E664C00B28E5C /* LaunchScreen.storyboard */; };
 		63C29FAF250E664C00B28E5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C29FAE250E664C00B28E5C /* main.m */; };
+		66FC4B3BA37E0AC83AF839D0 /* libPods-KSLinkedListDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEDBDFA7D71D1368450CC89 /* libPods-KSLinkedListDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2192C0C48EC329CE977DD7FE /* Pods-KSLinkedListDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSLinkedListDemo.release.xcconfig"; path = "Target Support Files/Pods-KSLinkedListDemo/Pods-KSLinkedListDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5BEDBDFA7D71D1368450CC89 /* libPods-KSLinkedListDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KSLinkedListDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C29F99250E664A00B28E5C /* KSLinkedListDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSLinkedListDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C29F9C250E664A00B28E5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		63C29F9D250E664A00B28E5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -29,6 +32,7 @@
 		63C29FAB250E664C00B28E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63C29FAD250E664C00B28E5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63C29FAE250E664C00B28E5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DD216F7A8FA591295E620094 /* Pods-KSLinkedListDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSLinkedListDemo.debug.xcconfig"; path = "Target Support Files/Pods-KSLinkedListDemo/Pods-KSLinkedListDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +40,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FC4B3BA37E0AC83AF839D0 /* libPods-KSLinkedListDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33C9115C39EFDC92B82AB700 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD216F7A8FA591295E620094 /* Pods-KSLinkedListDemo.debug.xcconfig */,
+				2192C0C48EC329CE977DD7FE /* Pods-KSLinkedListDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		63C29F90250E664A00B28E5C = {
 			isa = PBXGroup;
 			children = (
 				63C29F9B250E664A00B28E5C /* KSLinkedListDemo */,
 				63C29F9A250E664A00B28E5C /* Products */,
+				33C9115C39EFDC92B82AB700 /* Pods */,
+				789505771C0180377D5B9236 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +93,14 @@
 			path = KSLinkedListDemo;
 			sourceTree = "<group>";
 		};
+		789505771C0180377D5B9236 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BEDBDFA7D71D1368450CC89 /* libPods-KSLinkedListDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +108,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63C29FB2250E664C00B28E5C /* Build configuration list for PBXNativeTarget "KSLinkedListDemo" */;
 			buildPhases = (
+				6B6FA257C8D0BB609EAF8CED /* [CP] Check Pods Manifest.lock */,
 				63C29F95250E664A00B28E5C /* Sources */,
 				63C29F96250E664A00B28E5C /* Frameworks */,
 				63C29F97250E664A00B28E5C /* Resources */,
@@ -140,6 +166,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B6FA257C8D0BB609EAF8CED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KSLinkedListDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63C29F95250E664A00B28E5C /* Sources */ = {
@@ -287,6 +338,7 @@
 		};
 		63C29FB3250E664C00B28E5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD216F7A8FA591295E620094 /* Pods-KSLinkedListDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +356,7 @@
 		};
 		63C29FB4250E664C00B28E5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2192C0C48EC329CE977DD7FE /* Pods-KSLinkedListDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

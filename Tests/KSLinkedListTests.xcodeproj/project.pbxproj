@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		63C29FE1250E67C500B28E5C /* KSLinkedListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C29FE0250E67C500B28E5C /* KSLinkedListTests.m */; };
+		D9099635B5CDBDFD2A527CD8 /* libPods-KSLinkedListTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5856E2282F53C069CCECBEEC /* libPods-KSLinkedListTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5856E2282F53C069CCECBEEC /* libPods-KSLinkedListTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KSLinkedListTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BAD71611B24E42315129D98 /* Pods-KSLinkedListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSLinkedListTests.release.xcconfig"; path = "Target Support Files/Pods-KSLinkedListTests/Pods-KSLinkedListTests.release.xcconfig"; sourceTree = "<group>"; };
 		63C29FDE250E67C500B28E5C /* KSLinkedListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSLinkedListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C29FE0250E67C500B28E5C /* KSLinkedListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSLinkedListTests.m; sourceTree = "<group>"; };
 		63C29FE2250E67C500B28E5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B32AED6B62DC06DD4A9BCEE9 /* Pods-KSLinkedListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSLinkedListTests.debug.xcconfig"; path = "Target Support Files/Pods-KSLinkedListTests/Pods-KSLinkedListTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +25,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9099635B5CDBDFD2A527CD8 /* libPods-KSLinkedListTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C5D1C4E8C59F003FA58DCE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B32AED6B62DC06DD4A9BCEE9 /* Pods-KSLinkedListTests.debug.xcconfig */,
+				5BAD71611B24E42315129D98 /* Pods-KSLinkedListTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		63C29FB5250E674600B28E5C = {
 			isa = PBXGroup;
 			children = (
 				63C29FDF250E67C500B28E5C /* KSLinkedListTests */,
 				63C29FBF250E674600B28E5C /* Products */,
+				0C5D1C4E8C59F003FA58DCE9 /* Pods */,
+				C0C6D83B42AC7E0B65C6AFB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,6 +69,14 @@
 			path = KSLinkedListTests;
 			sourceTree = "<group>";
 		};
+		C0C6D83B42AC7E0B65C6AFB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5856E2282F53C069CCECBEEC /* libPods-KSLinkedListTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -59,6 +84,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63C29FE3250E67C500B28E5C /* Build configuration list for PBXNativeTarget "KSLinkedListTests" */;
 			buildPhases = (
+				1A09DD5B5960FA7B8EBC6DC9 /* [CP] Check Pods Manifest.lock */,
 				63C29FDA250E67C500B28E5C /* Sources */,
 				63C29FDB250E67C500B28E5C /* Frameworks */,
 				63C29FDC250E67C500B28E5C /* Resources */,
@@ -113,6 +139,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A09DD5B5960FA7B8EBC6DC9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KSLinkedListTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63C29FDA250E67C500B28E5C /* Sources */ = {
@@ -238,6 +289,7 @@
 		};
 		63C29FE4250E67C500B28E5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B32AED6B62DC06DD4A9BCEE9 /* Pods-KSLinkedListTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3VR2JM3236;
@@ -255,6 +307,7 @@
 		};
 		63C29FE5250E67C500B28E5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BAD71611B24E42315129D98 /* Pods-KSLinkedListTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3VR2JM3236;
