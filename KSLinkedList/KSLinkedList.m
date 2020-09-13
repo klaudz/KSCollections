@@ -20,6 +20,24 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
+- (instancetype)initWithArray:(NSArray *)array
+{
+    self = [self init];
+    if (self) {
+        for (id object in array) {
+            KSLinkedNode *node = [[KSLinkedNode alloc] initWithObject:object];
+            [self addNode:node];
+            [node release];
+        }
+    }
+    return self;
+}
+
++ (instancetype)listWithArray:(NSArray *)array
+{
+    return [[[self alloc] initWithArray:array] autorelease];
+}
+
 - (void)dealloc
 {
     [_headNode release];

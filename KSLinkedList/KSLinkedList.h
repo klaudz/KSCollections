@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSUInteger count;
 
+- (instancetype)initWithArray:(NSArray *)array;
++ (instancetype)listWithArray:(NSArray *)array;
+
 - (void)enumerateNodesUsingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
 - (void)enumerateNodesWithOptions:(NSEnumerationOptions)options usingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
 
