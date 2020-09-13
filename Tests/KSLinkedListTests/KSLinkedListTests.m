@@ -65,4 +65,41 @@
     }
 }
 
+#pragma mark Insert Nodes
+
+- (void)test_addNode$
+{
+    // Initialize test data
+    NSArray<NSNumber *> *testDataArray = @[ @(0), @(1), @(2), @(3) ];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] init];
+    
+    // Run tests
+    for (NSNumber *number in testDataArray) {
+        [linkedList addNode:[KSLinkedNode nodeWithObject:number]];
+    }
+    
+    // Assert results
+    XCTAssert(linkedList.count == testDataArray.count);
+    XCTAssert(linkedList.headNode.object == testDataArray.firstObject);
+    XCTAssert(linkedList.tailNode.object == testDataArray.lastObject);
+    {
+        NSMutableArray<NSNumber *> *resultDataArray = [[NSMutableArray alloc] init];
+        [linkedList enumerateNodesWithOptions:kNilOptions usingBlock:^(KSLinkedNode * _Nonnull node, NSUInteger index, BOOL * _Nonnull stop) {
+            [resultDataArray addObject:node.object];
+        }];
+        for (NSUInteger i = 0; i < resultDataArray.count; i++) {
+            XCTAssert([testDataArray[i] isEqualToNumber:resultDataArray[i]]);
+        }
+    }
+    {
+        NSMutableArray<NSNumber *> *resultDataArray = [[NSMutableArray alloc] init];
+        [linkedList enumerateNodesWithOptions:NSEnumerationReverse usingBlock:^(KSLinkedNode * _Nonnull node, NSUInteger index, BOOL * _Nonnull stop) {
+            [resultDataArray insertObject:node.object atIndex:0];
+        }];
+        for (NSUInteger i = 0; i < resultDataArray.count; i++) {
+            XCTAssert([testDataArray[i] isEqualToNumber:resultDataArray[i]]);
+        }
+    }
+}
+
 @end
