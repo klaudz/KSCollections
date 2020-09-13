@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "KSLinkedList.h"
 
 @interface KSLinkedListTests : XCTestCase
 
@@ -14,24 +15,54 @@
 
 @implementation KSLinkedListTests
 
-- (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+- (void)setUp
+{
+    
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)tearDown
+{
+    
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
+#pragma mark Enumerate Nodes
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+- (void)test_enumerateNodesWithOptions$usingBlock$
+{
+    // Initialize test data
+    NSArray<NSNumber *> *testDataArray = @[ @(0), @(1), @(2), @(3) ];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:testDataArray];
+    
+    // Run tests
+    NSMutableArray<NSNumber *> *resultIndexArray = [[NSMutableArray alloc] init];
+    [linkedList enumerateNodesWithOptions:kNilOptions usingBlock:^(KSLinkedNode * _Nonnull node, NSUInteger index, BOOL * _Nonnull stop) {
+        [resultIndexArray addObject:@(index)];
     }];
+    
+    // Assert results
+    XCTAssert(testDataArray.count == resultIndexArray.count);
+    for (NSUInteger i = 0; i < resultIndexArray.count; i++) {
+        XCTAssert([testDataArray[i] isEqualToNumber:resultIndexArray[i]]);
+    }
+}
+
+- (void)test_enumerateNodesWithOptions$usingBlock$_reverse
+{
+    // Initialize test data
+    NSArray<NSNumber *> *testDataArray = @[ @(0), @(1), @(2), @(3) ];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:testDataArray];
+    
+    // Run tests
+    NSMutableArray<NSNumber *> *resultIndexArray = [[NSMutableArray alloc] init];
+    [linkedList enumerateNodesWithOptions:NSEnumerationReverse usingBlock:^(KSLinkedNode * _Nonnull node, NSUInteger index, BOOL * _Nonnull stop) {
+        [resultIndexArray insertObject:@(index) atIndex:0];
+    }];
+    
+    // Assert results
+    XCTAssert(testDataArray.count == resultIndexArray.count);
+    for (NSUInteger i = 0; i < resultIndexArray.count; i++) {
+        XCTAssert([testDataArray[i] isEqualToNumber:resultIndexArray[i]]);
+    }
 }
 
 @end
