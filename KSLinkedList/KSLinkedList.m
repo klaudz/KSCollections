@@ -28,6 +28,21 @@ NS_ASSUME_NONNULL_BEGIN
     [super dealloc];
 }
 
+#pragma mark Insert Nodes
+
+- (void)addNode:(KSLinkedNode *)node
+{
+    if (self.tailNode == nil) {
+        self.headNode = node;
+        self.tailNode = node;
+    } else {
+        self.tailNode.nextNode = node;
+        node.prevNode = self.tailNode;
+        self.tailNode = node;
+    }
+    self.count++;
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

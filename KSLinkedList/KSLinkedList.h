@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSUInteger count;
 
+- (void)addNode:(KSLinkedNode *)node;
+
 @end
 
 NS_ASSUME_NONNULL_END
