@@ -153,7 +153,7 @@
     
     // Run tests: insert the node after the head and at the tail
     [linkedList insertNode:node2 afterNode:linkedList.headNode];
-    [mutableDataArray insertObject:node2.object atIndex:1];
+    [mutableDataArray insertObject:node2.object atIndex:[mutableDataArray indexOfObject:linkedList.headNode.object] + 1];
     
     // Assert results
     [self validateNodesInLinkedList:linkedList];
@@ -161,7 +161,7 @@
     
     // Run tests: insert the node after the head and in the middle
     [linkedList insertNode:node1 afterNode:linkedList.headNode];
-    [mutableDataArray insertObject:node1.object atIndex:1];
+    [mutableDataArray insertObject:node1.object atIndex:[mutableDataArray indexOfObject:linkedList.headNode.object] + 1];
     
     // Assert results
     [self validateNodesInLinkedList:linkedList];
@@ -169,7 +169,7 @@
     
     // Run tests: insert the node after a node and at the tail
     [linkedList insertNode:node3 afterNode:node2];
-    [mutableDataArray insertObject:node3.object atIndex:3];
+    [mutableDataArray insertObject:node3.object atIndex:[mutableDataArray indexOfObject:node2.object] + 1];
     
     // Assert results
     [self validateNodesInLinkedList:linkedList];
