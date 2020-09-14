@@ -83,6 +83,56 @@
     [self validateValuesInLinkedList:linkedList withArray:testDataArray];
 }
 
+#pragma mark Remove Nodes
+
+- (void)test_removeNode$
+{
+    // Initialize test data
+    NSArray<NSNumber *> *testArray = @[ @(0), @(1), @(2), @(3) ];
+    NSMutableArray<NSNumber *> *mutableDataArray = [testArray mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] init];
+    KSLinkedNode *node0 = [KSLinkedNode nodeWithObject:testArray[0]];
+    KSLinkedNode *node1 = [KSLinkedNode nodeWithObject:testArray[1]];
+    KSLinkedNode *node2 = [KSLinkedNode nodeWithObject:testArray[2]];
+    KSLinkedNode *node3 = [KSLinkedNode nodeWithObject:testArray[3]];
+    [linkedList addNode:node0];
+    [linkedList addNode:node1];
+    [linkedList addNode:node2];
+    [linkedList addNode:node3];
+    
+    // Run tests: remove a middle node
+    [linkedList removeNode:node2];
+    [mutableDataArray removeObject:node2.object];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: remove the head node
+    [linkedList removeNode:node0];
+    [mutableDataArray removeObject:node0.object];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: remove the tail node
+    [linkedList removeNode:node3];
+    [mutableDataArray removeObject:node3.object];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: remove the single node
+    [linkedList removeNode:node1];
+    [mutableDataArray removeObject:node1.object];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
 #pragma mark - Common
 
 - (void)validateNodesInLinkedList:(KSLinkedList *)linkedList
