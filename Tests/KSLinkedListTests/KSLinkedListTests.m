@@ -83,6 +83,100 @@
     [self validateValuesInLinkedList:linkedList withArray:testDataArray];
 }
 
+- (void)test_unshiftNode$
+{
+    // Initialize test data
+    NSArray<NSNumber *> *testDataArray = @[ @(0), @(1), @(2), @(3) ];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] init];
+    
+    // Run tests
+    for (NSNumber *number in [[testDataArray reverseObjectEnumerator] allObjects]) {
+        [linkedList unshiftNode:[KSLinkedNode nodeWithObject:number]];
+    }
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:testDataArray];
+}
+
+- (void)test_insertNode$atIndex$
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [[NSMutableArray alloc] init];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] init];
+    KSLinkedNode *node0 = [KSLinkedNode nodeWithObject:@(0)];
+    KSLinkedNode *node1 = [KSLinkedNode nodeWithObject:@(1)];
+    KSLinkedNode *node2 = [KSLinkedNode nodeWithObject:@(2)];
+    KSLinkedNode *node3 = [KSLinkedNode nodeWithObject:@(3)];
+    
+    // Run tests: insert the first node
+    [linkedList insertNode:node1 atIndex:0];
+    [mutableDataArray insertObject:node1.object atIndex:0];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: insert the node at the head
+    [linkedList insertNode:node0 atIndex:0];
+    [mutableDataArray insertObject:node0.object atIndex:0];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: insert the node at the tail
+    [linkedList insertNode:node3 atIndex:2];
+    [mutableDataArray insertObject:node3.object atIndex:2];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: insert the node in the middle
+    [linkedList insertNode:node2 atIndex:2];
+    [mutableDataArray insertObject:node2.object atIndex:2];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
+- (void)test_insertNode$afterNode$
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    KSLinkedNode *node1 = [KSLinkedNode nodeWithObject:@(1)];
+    KSLinkedNode *node2 = [KSLinkedNode nodeWithObject:@(2)];
+    KSLinkedNode *node3 = [KSLinkedNode nodeWithObject:@(3)];
+    
+    // Run tests: insert the node after the head and at the tail
+    [linkedList insertNode:node2 afterNode:linkedList.headNode];
+    [mutableDataArray insertObject:node2.object atIndex:1];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: insert the node after the head and in the middle
+    [linkedList insertNode:node1 afterNode:linkedList.headNode];
+    [mutableDataArray insertObject:node1.object atIndex:1];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: insert the node after a node and at the tail
+    [linkedList insertNode:node3 afterNode:node2];
+    [mutableDataArray insertObject:node3.object atIndex:3];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
+
 #pragma mark Remove Nodes
 
 - (void)test_removeNode$
