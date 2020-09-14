@@ -182,13 +182,12 @@
 - (void)test_removeNode$
 {
     // Initialize test data
-    NSArray<NSNumber *> *testArray = @[ @(0), @(1), @(2), @(3) ];
-    NSMutableArray<NSNumber *> *mutableDataArray = [testArray mutableCopy];
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
     KSLinkedList *linkedList = [[KSLinkedList alloc] init];
-    KSLinkedNode *node0 = [KSLinkedNode nodeWithObject:testArray[0]];
-    KSLinkedNode *node1 = [KSLinkedNode nodeWithObject:testArray[1]];
-    KSLinkedNode *node2 = [KSLinkedNode nodeWithObject:testArray[2]];
-    KSLinkedNode *node3 = [KSLinkedNode nodeWithObject:testArray[3]];
+    KSLinkedNode *node0 = [KSLinkedNode nodeWithObject:mutableDataArray[0]];
+    KSLinkedNode *node1 = [KSLinkedNode nodeWithObject:mutableDataArray[1]];
+    KSLinkedNode *node2 = [KSLinkedNode nodeWithObject:mutableDataArray[2]];
+    KSLinkedNode *node3 = [KSLinkedNode nodeWithObject:mutableDataArray[3]];
     [linkedList addNode:node0];
     [linkedList addNode:node1];
     [linkedList addNode:node2];
