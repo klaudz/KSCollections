@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)dealloc
 {
+    // TODO: Remove all nodes and clean up their referred `.linkedList`
+    
     [_headNode release];
     [_tailNode release];
     
@@ -80,12 +82,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addNode:(KSLinkedNode *)node
 {
+    if (node.linkedList == self) {
+        [self removeNode:node];
+    }
+    NSAssert(node.linkedList == nil, ([NSString stringWithFormat:@"Node %@ was referred to another linked list", node]));
+    
+    node.linkedList = self;
+    node.nextNode = nil;
     if (self.tailNode == nil) {
+        node.prevNode = nil;
         self.headNode = node;
         self.tailNode = node;
     } else {
-        self.tailNode.nextNode = node;
         node.prevNode = self.tailNode;
+        self.tailNode.nextNode = node;
         self.tailNode = node;
     }
     self.count++;
