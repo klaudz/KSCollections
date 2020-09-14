@@ -171,14 +171,19 @@ NS_ASSUME_NONNULL_BEGIN
         return;
     }
     
+    [node retain];
+    
     if (self.headNode == node) self.headNode = node.nextNode;
     if (self.tailNode == node) self.tailNode = node.prevNode;
     if (node.prevNode) node.prevNode.nextNode = node.nextNode;
     if (node.nextNode) node.nextNode.prevNode = node.prevNode;
+    
     node.prevNode = nil;
     node.nextNode = nil;
     node.linkedList = nil;
     self.count--;
+    
+    [node release];
 }
 
 @end
