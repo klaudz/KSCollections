@@ -99,7 +99,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.count++;
 }
 
-- (void)unshiftNode:(KSLinkedNode *)node
+- (void)insertHeadNode:(KSLinkedNode *)node
 {
     if (node.linkedList == self) {
         [self removeNode:node];
@@ -143,7 +143,7 @@ NS_ASSUME_NONNULL_BEGIN
         [self insertNode:node afterNode:targetNode];
     } else {
         // Insert node as the head node
-        [self unshiftNode:node];
+        [self insertHeadNode:node];
     }
 }
 

@@ -83,7 +83,7 @@
     [self validateValuesInLinkedList:linkedList withArray:testDataArray];
 }
 
-- (void)test_unshiftNode$
+- (void)test_insertHeadNode$
 {
     // Initialize test data
     NSArray<NSNumber *> *testDataArray = @[ @(0), @(1), @(2), @(3) ];
@@ -91,7 +91,7 @@
     
     // Run tests
     for (NSNumber *number in [[testDataArray reverseObjectEnumerator] allObjects]) {
-        [linkedList unshiftNode:[KSLinkedNode nodeWithObject:number]];
+        [linkedList insertHeadNode:[KSLinkedNode nodeWithObject:number]];
     }
     
     // Assert results
