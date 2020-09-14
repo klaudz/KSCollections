@@ -89,15 +89,13 @@ NS_ASSUME_NONNULL_BEGIN
     
     node.linkedList = self;
     node.nextNode = nil;
-    if (self.tailNode == nil) {
-        node.prevNode = nil;
-        self.headNode = node;
-        self.tailNode = node;
-    } else {
-        node.prevNode = self.tailNode;
+    node.prevNode = self.tailNode;
+    if (self.tailNode) {
         self.tailNode.nextNode = node;
-        self.tailNode = node;
+    } else {
+        self.headNode = node;
     }
+    self.tailNode = node;
     self.count++;
 }
 
