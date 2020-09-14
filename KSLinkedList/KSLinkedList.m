@@ -186,6 +186,67 @@ NS_ASSUME_NONNULL_BEGIN
     [node release];
 }
 
+- (void)removeNodesFromNode:(KSLinkedNode *)fromNode toNode:(KSLinkedNode *)toNode
+{
+    NSAssert(fromNode.linkedList == self, ([NSString stringWithFormat:@"Node %@ was not referred to this linked list", fromNode]));
+    NSAssert(toNode.linkedList == self, ([NSString stringWithFormat:@"Node %@ was not referred to this linked list", toNode]));
+    
+    [fromNode retain];
+    [toNode retain];
+    
+    if (self.headNode == fromNode) self.headNode = toNode.nextNode;
+    if (self.tailNode == toNode) self.tailNode = fromNode.prevNode;
+    if (fromNode.prevNode) fromNode.prevNode.nextNode = toNode.nextNode;
+    if (toNode.nextNode) toNode.nextNode.prevNode = fromNode.prevNode;
+    
+    NSUInteger removedCount = 0;
+    KSLinkedNode *node = fromNode;
+    while (node) {
+        KSLinkedNode *nextNode = (node != toNode) ? node.nextNode : nil;
+        node.prevNode = nil;
+        node.nextNode = nil;
+        node.linkedList = nil;
+        removedCount++;
+        node = nextNode;
+    }
+    self.count -= removedCount;
+    
+    [fromNode release];
+    [toNode release];
+}
+
+- (void)removeNodesFromNode:(KSLinkedNode *)fromNode
+{
+    if (self.tailNode == nil) {
+        return;
+    }
+    [self removeNodesFromNode:fromNode toNode:self.tailNode];
+}
+
+- (void)removeNodesAfterNode:(KSLinkedNode *)afterNode
+{
+    if (self.tailNode == nil || afterNode.nextNode == nil) {
+        return;
+    }
+    [self removeNodesFromNode:afterNode.nextNode toNode:self.tailNode];
+}
+
+- (void)removeNodesToNode:(KSLinkedNode *)toNode
+{
+    if (self.headNode == nil) {
+        return;
+    }
+    [self removeNodesFromNode:self.headNode toNode:toNode];
+}
+
+- (void)removeNodesBeforeNode:(KSLinkedNode *)beforeNode
+{
+    if (self.headNode == nil || beforeNode.prevNode == nil) {
+        return;
+    }
+    [self removeNodesFromNode:self.headNode toNode:beforeNode.prevNode];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END
