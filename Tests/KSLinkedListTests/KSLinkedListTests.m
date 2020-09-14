@@ -226,6 +226,101 @@
     [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
 }
 
+- (void)test_removeNodesFromNode$toNode$_fromHeadToTail
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests
+    KSLinkedNode *fromNode = linkedList.headNode;
+    KSLinkedNode *toNode = linkedList.tailNode;
+    [linkedList removeNodesFromNode:fromNode toNode:toNode];
+    NSUInteger fromIndex = [mutableDataArray indexOfObject:fromNode.object];
+    NSUInteger toIndex = [mutableDataArray indexOfObject:toNode.object];
+    [mutableDataArray removeObjectsInRange:NSMakeRange(fromIndex, toIndex - fromIndex + 1)];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
+- (void)test_removeNodesFromNode$toNode$_fromHeadToNode
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests
+    KSLinkedNode *fromNode = linkedList.headNode;
+    KSLinkedNode *toNode = linkedList.tailNode.prevNode;
+    [linkedList removeNodesFromNode:fromNode toNode:toNode];
+    NSUInteger fromIndex = [mutableDataArray indexOfObject:fromNode.object];
+    NSUInteger toIndex = [mutableDataArray indexOfObject:toNode.object];
+    [mutableDataArray removeObjectsInRange:NSMakeRange(fromIndex, toIndex - fromIndex + 1)];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
+- (void)test_removeNodesFromNode$toNode$_fromNodeToTail
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests
+    KSLinkedNode *fromNode = linkedList.headNode.nextNode;
+    KSLinkedNode *toNode = linkedList.tailNode;
+    [linkedList removeNodesFromNode:fromNode toNode:toNode];
+    NSUInteger fromIndex = [mutableDataArray indexOfObject:fromNode.object];
+    NSUInteger toIndex = [mutableDataArray indexOfObject:toNode.object];
+    [mutableDataArray removeObjectsInRange:NSMakeRange(fromIndex, toIndex - fromIndex + 1)];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
+- (void)test_removeNodesFromNode$toNode$_fromNode1ToNode2
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests
+    KSLinkedNode *fromNode = linkedList.headNode.nextNode;
+    KSLinkedNode *toNode = linkedList.tailNode.prevNode;
+    [linkedList removeNodesFromNode:fromNode toNode:toNode];
+    NSUInteger fromIndex = [mutableDataArray indexOfObject:fromNode.object];
+    NSUInteger toIndex = [mutableDataArray indexOfObject:toNode.object];
+    [mutableDataArray removeObjectsInRange:NSMakeRange(fromIndex, toIndex - fromIndex + 1)];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
+- (void)test_removeNodesFromNode$toNode$_fromNodeToNode
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests
+    KSLinkedNode *fromNode = linkedList.headNode.nextNode;
+    KSLinkedNode *toNode = fromNode;
+    [linkedList removeNodesFromNode:fromNode toNode:toNode];
+    NSUInteger fromIndex = [mutableDataArray indexOfObject:fromNode.object];
+    NSUInteger toIndex = [mutableDataArray indexOfObject:toNode.object];
+    [mutableDataArray removeObjectsInRange:NSMakeRange(fromIndex, toIndex - fromIndex + 1)];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
 #pragma mark - Common
 
 - (void)validateNodesInLinkedList:(KSLinkedList *)linkedList
