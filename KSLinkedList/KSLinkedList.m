@@ -101,6 +101,24 @@ NS_ASSUME_NONNULL_BEGIN
     self.count++;
 }
 
+#pragma mark Remove Nodes
+
+- (void)removeNode:(KSLinkedNode *)node
+{
+    if (node.linkedList != self) {
+        return;
+    }
+    
+    if (self.headNode == node) self.headNode = node.nextNode;
+    if (self.tailNode == node) self.tailNode = node.prevNode;
+    if (node.prevNode) node.prevNode.nextNode = node.nextNode;
+    if (node.nextNode) node.nextNode.prevNode = node.prevNode;
+    node.prevNode = nil;
+    node.nextNode = nil;
+    node.linkedList = nil;
+    self.count--;
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

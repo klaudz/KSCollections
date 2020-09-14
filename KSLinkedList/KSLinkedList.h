@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addNode:(KSLinkedNode *)node;
 
+- (void)removeNode:(KSLinkedNode *)node;
+
 @end
 
 NS_ASSUME_NONNULL_END
