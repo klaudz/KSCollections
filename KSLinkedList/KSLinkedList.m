@@ -124,7 +124,10 @@ NS_ASSUME_NONNULL_BEGIN
         [self removeNode:node];
     }
     NSAssert(node.linkedList == nil, ([NSString stringWithFormat:@"Node %@ was referred to another linked list", node]));
-    NSAssert(index <= self.count, ([NSString stringWithFormat:@"Index %llu beyond bounds [0...%llu]", (unsigned long long)index, (unsigned long long)self.count]));
+    NSAssert(index <= self.count,
+             ([NSString stringWithFormat:@"Index %llu beyond bounds %@",
+               (unsigned long long)index,
+               (self.count > 0) ? [NSString stringWithFormat:@"[0 .. %llu]", (unsigned long long)(self.count - 1)] : @"for empty linked list"]));
     
     KSLinkedNode *targetNode = nil;
     for (NSUInteger i = 0; i < index; i++) {
