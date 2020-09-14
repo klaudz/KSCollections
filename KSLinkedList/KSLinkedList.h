@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)enumerateNodesWithOptions:(NSEnumerationOptions)options usingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
 
 - (void)addNode:(KSLinkedNode *)node;
+- (void)unshiftNode:(KSLinkedNode *)node;
+- (void)insertNode:(KSLinkedNode *)node atIndex:(NSUInteger)index;
+- (void)insertNode:(KSLinkedNode *)node afterNode:(KSLinkedNode *)siblingNode;
 
 - (void)removeNode:(KSLinkedNode *)node;
 

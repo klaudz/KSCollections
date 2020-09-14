@@ -99,6 +99,70 @@ NS_ASSUME_NONNULL_BEGIN
     self.count++;
 }
 
+- (void)unshiftNode:(KSLinkedNode *)node
+{
+    if (node.linkedList == self) {
+        [self removeNode:node];
+    }
+    NSAssert(node.linkedList == nil, ([NSString stringWithFormat:@"Node %@ was referred to another linked list", node]));
+    
+    node.linkedList = self;
+    node.prevNode = nil;
+    node.nextNode = self.headNode;
+    if (self.headNode) {
+        self.headNode.prevNode = node;
+    } else {
+        self.tailNode = node;
+    }
+    self.headNode = node;
+    self.count++;
+}
+
+- (void)insertNode:(KSLinkedNode *)node atIndex:(NSUInteger)index
+{
+    if (node.linkedList == self) {
+        [self removeNode:node];
+    }
+    NSAssert(node.linkedList == nil, ([NSString stringWithFormat:@"Node %@ was referred to another linked list", node]));
+    NSAssert(index <= self.count, ([NSString stringWithFormat:@"Index %llu beyond bounds [0...%llu]", (unsigned long long)index, (unsigned long long)self.count]));
+    
+    KSLinkedNode *targetNode = nil;
+    for (NSUInteger i = 0; i < index; i++) {
+        if (targetNode == nil) {
+            targetNode = self.headNode;
+        } else if (targetNode.nextNode) {
+            targetNode = targetNode.nextNode;
+        } else {
+            // Beyond bounds
+        }
+    }
+    if (targetNode) {
+        [self insertNode:node afterNode:targetNode];
+    } else {
+        // Insert node as the head node
+        [self unshiftNode:node];
+    }
+}
+
+- (void)insertNode:(KSLinkedNode *)node afterNode:(KSLinkedNode *)siblingNode
+{
+    NSAssert(siblingNode.linkedList == self, ([NSString stringWithFormat:@"Node %@ was not referred to this linked list", node]));
+    if (node.linkedList == self) {
+        [self removeNode:node];
+    }
+    NSAssert(node.linkedList == nil, ([NSString stringWithFormat:@"Node %@ was referred to another linked list", node]));
+    
+    node.linkedList = self;
+    siblingNode.nextNode.prevNode = node;
+    node.nextNode = siblingNode.nextNode;
+    siblingNode.nextNode = node;
+    node.prevNode = siblingNode;
+    if (self.tailNode == siblingNode) {
+        self.tailNode = node;
+    }
+    self.count++;
+}
+
 #pragma mark Remove Nodes
 
 - (void)removeNode:(KSLinkedNode *)node
