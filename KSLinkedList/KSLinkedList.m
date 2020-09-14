@@ -166,6 +166,25 @@ NS_ASSUME_NONNULL_BEGIN
     self.count++;
 }
 
+- (void)insertNode:(KSLinkedNode *)node beforeNode:(KSLinkedNode *)siblingNode
+{
+    NSAssert(siblingNode.linkedList == self, ([NSString stringWithFormat:@"Node %@ was not referred to this linked list", node]));
+    if (node.linkedList == self) {
+        [self removeNode:node];
+    }
+    NSAssert(node.linkedList == nil, ([NSString stringWithFormat:@"Node %@ was referred to another linked list", node]));
+    
+    node.linkedList = self;
+    siblingNode.prevNode.nextNode = node;
+    node.prevNode = siblingNode.prevNode;
+    siblingNode.prevNode = node;
+    node.nextNode = siblingNode;
+    if (self.headNode == siblingNode) {
+        self.headNode = node;
+    }
+    self.count++;
+}
+
 #pragma mark Remove Nodes
 
 - (void)removeNode:(KSLinkedNode *)node
