@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KSLinkedList : NSObject
 
-@property (nonatomic, strong, nullable) KSLinkedNode *headNode;
-@property (nonatomic, strong, nullable) KSLinkedNode *tailNode;
+@property (nonatomic, strong, nullable) __kindof KSLinkedNode *headNode;
+@property (nonatomic, strong, nullable) __kindof KSLinkedNode *tailNode;
 
 @property (nonatomic, assign) NSUInteger count;
 
@@ -23,10 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (instancetype)listWithDictionary:(NSDictionary *)dictionary;
 
-- (void)enumerateNodesUsingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
-- (void)enumerateNodesWithOptions:(NSEnumerationOptions)options usingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
+- (void)enumerateNodesUsingBlock:(void (^)(__kindof KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
+- (void)enumerateNodesWithOptions:(NSEnumerationOptions)options usingBlock:(void (^)(__kindof KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
 
-- (KSLinkedNode *)nodeAtIndex:(NSUInteger)index;
+- (__kindof KSLinkedNode *)nodeAtIndex:(NSUInteger)index;
 
 - (void)addNode:(KSLinkedNode *)node;
 - (void)insertHeadNode:(KSLinkedNode *)node;

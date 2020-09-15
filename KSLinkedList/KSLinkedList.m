@@ -70,12 +70,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Enumerate Nodes
 
-- (void)enumerateNodesUsingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block
+- (void)enumerateNodesUsingBlock:(void (^)(__kindof KSLinkedNode *node, NSUInteger index, BOOL *stop))block
 {
     [self enumerateNodesWithOptions:kNilOptions usingBlock:block];
 }
 
-- (void)enumerateNodesWithOptions:(NSEnumerationOptions)options usingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
+- (void)enumerateNodesWithOptions:(NSEnumerationOptions)options usingBlock:(void (^)(__kindof KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
 {
     if ((options & NSEnumerationReverse) != NSEnumerationReverse) {
         KSLinkedNode *node = self.headNode;
@@ -100,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Query Nodes
 
-- (KSLinkedNode *)nodeAtIndex:(NSUInteger)index
+- (__kindof KSLinkedNode *)nodeAtIndex:(NSUInteger)index
 {
     NSAssert(index < self.count,
     ([NSString stringWithFormat:@"Index %llu beyond bounds %@",
