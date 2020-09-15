@@ -77,6 +77,24 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
+#pragma mark Query Nodes
+
+- (KSLinkedNode *)nodeAtIndex:(NSUInteger)index
+{
+    NSAssert(index < self.count,
+    ([NSString stringWithFormat:@"Index %llu beyond bounds %@",
+      (unsigned long long)index,
+      (self.count > 0) ? [NSString stringWithFormat:@"[0 .. %llu]", (unsigned long long)(self.count - 1)] : @"for empty linked list"]));
+    
+    KSLinkedNode *node = self.headNode;
+    for (NSUInteger i = 0; i < index; i++) {
+        node = node.nextNode;
+    }
+    
+    NSAssert(node != nil, @"Linked list was broken");
+    return node;
+}
+
 #pragma mark Insert Nodes
 
 - (void)addNode:(KSLinkedNode *)node

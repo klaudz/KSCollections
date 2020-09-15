@@ -65,6 +65,20 @@
     }
 }
 
+#pragma mark Query Nodes
+
+- (void)test_nodeAtIndex$
+{
+    // Initialize test data
+    NSArray<NSNumber *> *testDataArray = @[ @(0), @(1), @(2), @(3) ];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:testDataArray];
+    
+    // Run tests and assert results
+    XCTAssertEqual([linkedList nodeAtIndex:0].object, [testDataArray objectAtIndex:0]);
+    XCTAssertEqual([linkedList nodeAtIndex:1].object, [testDataArray objectAtIndex:1]);
+    XCTAssertEqual([linkedList nodeAtIndex:3].object, [testDataArray objectAtIndex:3]);
+}
+
 #pragma mark Insert Nodes
 
 - (void)test_addNode$
