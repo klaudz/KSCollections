@@ -40,10 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)dealloc
 {
-    // TODO: Remove all nodes and clean up their referred `.linkedList`
-    
-    [_headNode release];
-    [_tailNode release];
+    [self removeAllNodes];
+    // [_headNode release]; // `-removeAllNodes` have done this
+    // [_tailNode release]; // `-removeAllNodes` have done this
     
     [super dealloc];
 }
