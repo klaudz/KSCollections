@@ -390,12 +390,12 @@
 {
     XCTAssertNil(linkedList.headNode.prevNode);
     XCTAssertNil(linkedList.tailNode.nextNode);
-    if (linkedList.headNode) {
+    if (linkedList.count > 0) {
+        XCTAssertNotNil(linkedList.headNode);
         XCTAssertNotNil(linkedList.tailNode);
-        XCTAssert(linkedList.count > 0);
     } else {
+        XCTAssertNil(linkedList.headNode);
         XCTAssertNil(linkedList.tailNode);
-        XCTAssert(linkedList.count == 0);
     }
     {
         NSMutableArray<KSLinkedNode *> *nodeArray = [[NSMutableArray alloc] init];
