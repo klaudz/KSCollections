@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)removeNode:(KSLinkedNode *)node;
 - (void)removeNodeAtIndex:(NSUInteger)index;
+- (void)removeHeadNode;
+- (void)removeTailNode;
 
 - (void)removeAllNodes;
 - (void)removeNodesFromNode:(KSLinkedNode *)fromNode toNode:(KSLinkedNode *)toNode;

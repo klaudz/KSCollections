@@ -231,6 +231,22 @@ NS_ASSUME_NONNULL_BEGIN
     [self removeNode:node];
 }
 
+- (void)removeHeadNode
+{
+    if (self.headNode == nil) {
+        return;
+    }
+    [self removeNode:self.headNode];
+}
+
+- (void)removeTailNode
+{
+    if (self.tailNode == nil) {
+        return;
+    }
+    [self removeNode:self.tailNode];
+}
+
 - (void)removeAllNodes
 {
     if (self.headNode == nil || self.tailNode == nil) {
