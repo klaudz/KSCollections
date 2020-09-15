@@ -208,6 +208,14 @@ NS_ASSUME_NONNULL_BEGIN
     [node release];
 }
 
+- (void)removeAllNodes
+{
+    if (self.headNode == nil || self.tailNode == nil) {
+        return;
+    }
+    [self removeNodesFromNode:self.headNode toNode:self.tailNode];
+}
+
 - (void)removeNodesFromNode:(KSLinkedNode *)fromNode toNode:(KSLinkedNode *)toNode
 {
     NSAssert(fromNode.linkedList == self, ([NSString stringWithFormat:@"Node %@ was not referred to this linked list", fromNode]));

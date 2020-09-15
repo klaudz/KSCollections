@@ -259,6 +259,36 @@
     [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
 }
 
+- (void)test_removeAllObjects
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests
+    [linkedList removeAllNodes];
+    [mutableDataArray removeAllObjects];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
+- (void)test_removeAllObjects_emptyLinkedList
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests
+    [linkedList removeAllNodes];
+    [mutableDataArray removeAllObjects];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
 - (void)test_removeNodesFromNode$toNode$_fromHeadToTail
 {
     // Initialize test data
