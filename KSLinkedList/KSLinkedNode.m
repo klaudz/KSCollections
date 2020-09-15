@@ -27,7 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)dealloc
 {
+    [_key release];
     [_object release];
+    
     [_prevNode release];
     [_nextNode release];
     
