@@ -213,7 +213,18 @@ NS_ASSUME_NONNULL_BEGIN
     if (self.headNode == nil || self.tailNode == nil) {
         return;
     }
-    [self removeNodesFromNode:self.headNode toNode:self.tailNode];
+    
+    KSLinkedNode *node = self.headNode;
+    while (node) {
+        KSLinkedNode *nextNode = node.nextNode;
+        node.prevNode = nil;
+        node.nextNode = nil;
+        node.linkedList = nil;
+        node = nextNode;
+    }
+    self.headNode = nil;
+    self.tailNode = nil;
+    self.count = 0;
 }
 
 - (void)removeNodesFromNode:(KSLinkedNode *)fromNode toNode:(KSLinkedNode *)toNode
