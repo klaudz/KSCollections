@@ -390,6 +390,13 @@
 {
     XCTAssertNil(linkedList.headNode.prevNode);
     XCTAssertNil(linkedList.tailNode.nextNode);
+    if (linkedList.headNode) {
+        XCTAssertNotNil(linkedList.tailNode);
+        XCTAssert(linkedList.count > 0);
+    } else {
+        XCTAssertNil(linkedList.tailNode);
+        XCTAssert(linkedList.count == 0);
+    }
     {
         NSMutableArray<KSLinkedNode *> *nodeArray = [[NSMutableArray alloc] init];
         [linkedList enumerateNodesWithOptions:kNilOptions usingBlock:^(KSLinkedNode * _Nonnull node, NSUInteger index, BOOL * _Nonnull stop) {
