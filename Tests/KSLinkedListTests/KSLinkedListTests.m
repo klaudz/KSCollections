@@ -273,6 +273,45 @@
     [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
 }
 
+- (void)test_removeNodeAtIndex$
+{
+    // Initialize test data
+    NSMutableArray<NSNumber *> *mutableDataArray = [@[ @(0), @(1), @(2), @(3) ] mutableCopy];
+    KSLinkedList *linkedList = [[KSLinkedList alloc] initWithArray:mutableDataArray];
+    
+    // Run tests: remove a middle node
+    [linkedList removeNodeAtIndex:2];
+    [mutableDataArray removeObjectAtIndex:2];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: remove the head node
+    [linkedList removeNodeAtIndex:0];
+    [mutableDataArray removeObjectAtIndex:0];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: remove the tail node
+    [linkedList removeNodeAtIndex:1];
+    [mutableDataArray removeObjectAtIndex:1];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+    
+    // Run tests: remove the single node
+    [linkedList removeNodeAtIndex:0];
+    [mutableDataArray removeObjectAtIndex:0];
+    
+    // Assert results
+    [self validateNodesInLinkedList:linkedList];
+    [self validateValuesInLinkedList:linkedList withArray:mutableDataArray];
+}
+
 - (void)test_removeAllObjects
 {
     // Initialize test data

@@ -225,6 +225,12 @@ NS_ASSUME_NONNULL_BEGIN
     [node release];
 }
 
+- (void)removeNodeAtIndex:(NSUInteger)index
+{
+    KSLinkedNode *node = [self nodeAtIndex:index];
+    [self removeNode:node];
+}
+
 - (void)removeAllNodes
 {
     if (self.headNode == nil || self.tailNode == nil) {
