@@ -38,6 +38,27 @@ NS_ASSUME_NONNULL_BEGIN
     return [[[self alloc] initWithArray:array] autorelease];
 }
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [self init];
+    if (self) {
+        for (id key in dictionary) {
+            id object = dictionary[key];
+            KSLinkedNode *node = [[KSLinkedNode alloc] init];
+            node.key = key;
+            node.object = object;
+            [self addNode:node];
+            [node release];
+        }
+    }
+    return self;
+}
+
++ (instancetype)listWithDictionary:(NSDictionary *)dictionary
+{
+    return [[[self alloc] initWithDictionary:dictionary] autorelease];
+}
+
 - (void)dealloc
 {
     [self removeAllNodes];

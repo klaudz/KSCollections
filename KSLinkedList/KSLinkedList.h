@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithArray:(NSArray *)array;
 + (instancetype)listWithArray:(NSArray *)array;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)listWithDictionary:(NSDictionary *)dictionary;
+
 - (void)enumerateNodesUsingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
 - (void)enumerateNodesWithOptions:(NSEnumerationOptions)options usingBlock:(void (^)(KSLinkedNode *node, NSUInteger index, BOOL *stop))block;
 
