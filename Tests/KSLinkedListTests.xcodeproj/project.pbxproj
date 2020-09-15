@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		63C29FE1250E67C500B28E5C /* KSLinkedListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C29FE0250E67C500B28E5C /* KSLinkedListTests.m */; };
+		63D0F5EA2510AD66001F81FD /* NSObject+KSSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D0F5E92510AD66001F81FD /* NSObject+KSSwizzling.m */; };
+		63D0F5ED2510B0FE001F81FD /* KSLinkedList+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D0F5EC2510B0FE001F81FD /* KSLinkedList+Tests.m */; };
 		D9099635B5CDBDFD2A527CD8 /* libPods-KSLinkedListTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5856E2282F53C069CCECBEEC /* libPods-KSLinkedListTests.a */; };
 /* End PBXBuildFile section */
 
@@ -17,6 +19,10 @@
 		63C29FDE250E67C500B28E5C /* KSLinkedListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSLinkedListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C29FE0250E67C500B28E5C /* KSLinkedListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSLinkedListTests.m; sourceTree = "<group>"; };
 		63C29FE2250E67C500B28E5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63D0F5E82510AD66001F81FD /* NSObject+KSSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KSSwizzling.h"; sourceTree = "<group>"; };
+		63D0F5E92510AD66001F81FD /* NSObject+KSSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KSSwizzling.m"; sourceTree = "<group>"; };
+		63D0F5EB2510B0FE001F81FD /* KSLinkedList+Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KSLinkedList+Tests.h"; sourceTree = "<group>"; };
+		63D0F5EC2510B0FE001F81FD /* KSLinkedList+Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "KSLinkedList+Tests.m"; sourceTree = "<group>"; };
 		B32AED6B62DC06DD4A9BCEE9 /* Pods-KSLinkedListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSLinkedListTests.debug.xcconfig"; path = "Target Support Files/Pods-KSLinkedListTests/Pods-KSLinkedListTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +70,10 @@
 			isa = PBXGroup;
 			children = (
 				63C29FE0250E67C500B28E5C /* KSLinkedListTests.m */,
+				63D0F5EB2510B0FE001F81FD /* KSLinkedList+Tests.h */,
+				63D0F5EC2510B0FE001F81FD /* KSLinkedList+Tests.m */,
+				63D0F5E82510AD66001F81FD /* NSObject+KSSwizzling.h */,
+				63D0F5E92510AD66001F81FD /* NSObject+KSSwizzling.m */,
 				63C29FE2250E67C500B28E5C /* Info.plist */,
 			);
 			path = KSLinkedListTests;
@@ -171,6 +181,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63C29FE1250E67C500B28E5C /* KSLinkedListTests.m in Sources */,
+				63D0F5EA2510AD66001F81FD /* NSObject+KSSwizzling.m in Sources */,
+				63D0F5ED2510B0FE001F81FD /* KSLinkedList+Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

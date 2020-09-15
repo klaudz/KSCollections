@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "KSLinkedList.h"
+#import "KSLinkedList+Tests.h"
 
 @interface KSLinkedListTests : XCTestCase
 
@@ -17,12 +18,14 @@
 
 - (void)setUp
 {
-    
+    [KSLinkedList kst_resetAliveCount];
+    [KSLinkedNode kst_resetAliveCount];
 }
 
 - (void)tearDown
 {
-    
+    XCTAssertEqual([KSLinkedList kst_aliveCount], 0);
+    XCTAssertEqual([KSLinkedNode kst_aliveCount], 0);
 }
 
 #pragma mark Enumerate Nodes
