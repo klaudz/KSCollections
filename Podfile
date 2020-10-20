@@ -1,23 +1,23 @@
 
 
-target 'KSLinkedListDemo' do
+target 'KSCollectionsDemo' do
   
-  workspace 'KSLinkedList.xcworkspace'
-  project 'Examples/KSLinkedListDemo.xcodeproj'
+  workspace 'KSCollections.xcworkspace'
+  project 'Examples/KSCollectionsDemo.xcodeproj'
   platform :ios, '8.0'
   
-  # Pods for KSLinkedListDemo
-  pod 'KSLinkedList',     :path => '.'
+  # Pods for KSCollectionsDemo
+  pod 'KSCollections',     :path => '.'
   
 end
 
-target 'KSLinkedListTests' do
+target 'KSCollectionsTests' do
   
-  workspace 'KSLinkedList.xcworkspace'
-  project 'Tests/KSLinkedListTests.xcodeproj'
+  workspace 'KSCollections.xcworkspace'
+  project 'Tests/KSCollectionsTests.xcodeproj'
   platform :ios, '8.0'
   
-  # Pods for KSLinkedListTests
-  pod 'KSLinkedList',     :path => '.'
+  # Pods for KSCollectionsTests
+  pod 'KSCollections',     :path => '.'
   
 end
